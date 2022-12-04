@@ -49,6 +49,18 @@ router.route("/update/:id").put(async (req,res)=>{
     })
 })
 
+router.route("/delete/:id").delete(async (req,res)=>{
+    let userID = req.params.id;
+    await Student.findByIdAndDelete(userID)
+    .then(()=>{
+        res.status(200).send({status: "User Deleted..."});
+    }).catch((err)=>{
+        console.log(err.message);
+        res.status(500).send({status: "Error with delete user", error: err.message});
+    })
+})
+
+
 
 
 module.exports = router;
