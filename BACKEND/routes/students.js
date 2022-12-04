@@ -41,8 +41,9 @@ router.route("/update/:id").put(async (req,res)=>{
         age,
         gender
     }
-    const update = await Student.findByIdAndUpdate(userId, updateStudent).then(()=>{
-        res.status(200).send({status:"User Updated",user: update})
+    const update = await Student.findByIdAndUpdate(userId, updateStudent)
+    .then(()=>{
+        res.status(200).send({status:"User Updated"})
     }).catch((err)=>{
         console.log(err);
         res.status(500).send({status:"Error with updating data"});
@@ -62,11 +63,11 @@ router.route("/delete/:id").delete(async (req,res)=>{
 })
 
 //Find single student route
-router.route("/get/:id").get(async (req,res)=>{
-    let userId = reqparams.id;
+router.route("/get/:id").get(async (req, res)=>{
+    let userId = req.params.id;
     const user = await Student.findById(userId)
-    .then(()=>{
-        res.status(200).send({status: "User Fetched", user: user})
+    .then((student)=>{
+        res.status(200).send({status: "User Fetched", student})
     }).catch(()=>{
         console.log(err.message);
         res.status(500).send({status: "error with get user", error: err.message});
