@@ -17,7 +17,14 @@ router.route("/add").post((req,res)=>{
     }).catch(()=>{
         console.log(err);
     })
+})
 
+router.route("/").get((req,res)=>{
+    Student.find().then((students)=>{
+        res.json(students)
+    }).catch((err)=>{
+        console.log(err)
+    })
 })
 
 module.exports = router;
