@@ -13,7 +13,7 @@ function Header(){
                         <a className="nav-link text-dark" href="#">Home</a>
                     </li>
                     <li className="nav-item">
-                        <a className="nav-link text-dark" href="#">Create Student</a>
+                        <a className="nav-link text-dark" href="/add">Create Student</a>
                     </li>
                 </ul>
             </div>
